@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
+// 모든 페이지에 필요한 번개장터 Header2
+import Header2 from '@/components/main/Header2'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -16,7 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className='flex justify-center border-b border-1 border-gray'>
+          <Header2></Header2>
+        </div>
+        {children}
+        </body>
     </html>
   )
 }
