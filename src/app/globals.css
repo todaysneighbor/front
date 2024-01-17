@@ -6,8 +6,8 @@
   /* 기본 글자 색 */
   --foreground-rgb: 33, 33, 33;
   /* 기본 배경 색 */
-  --background-start-rgb: 234, 234, 234;
-  --background-end-rgb: 234, 234, 234;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
