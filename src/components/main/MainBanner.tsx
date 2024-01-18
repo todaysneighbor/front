@@ -40,20 +40,14 @@ export const StyledSlider = styled(Slider)`
    justify-content: center;
 
   .slick-list {  // 슬라이드 스크린
-    width: 100%;
+    width: 1024px;
     height: 300px;
-    overflow-x: hidden;
     justify-content: center;
   }
 
-  .slick-slide div { // 슬라이더 컨텐츠
-    cursor: pointer;
-  }
-
   .slick-prev {
-    z-index: 99999;
+    z-index: 9999;
   }
-  
 
 `;
 
@@ -62,7 +56,7 @@ function SampleNextArrow(props: any) {
     return (
       <div
         className={className}
-        style={{ ...style, display: 'block', background: "black", position: 'absolute', top: '1/2' }}
+        style={{ ...style, position: 'absolute', right: 0 }}
         onClick={onClick}
       />
     );
@@ -73,7 +67,7 @@ function SampleNextArrow(props: any) {
     return (
       <div
         className={className}
-        style={{ ...style, display: 'block', background: "green" }}
+        style={{ ...style, position: 'absolute', left: 0 }}
         onClick={onClick}
       />
     );
@@ -81,19 +75,19 @@ function SampleNextArrow(props: any) {
 
 export default function MainBanner () {
     const settings = {
-        dots: true,    // 슬라이드 밑 점
+        dots: false,    // 슬라이드 밑 점
         infinite: true, // 무한 반복
         speed: 500,
-        autoplay: false, // 자동 넘김
+        autoplay: true, // 자동 넘김
         autoplaySpeed: 2000,  
         slidesToShow: 1,    // 스크린데 보여지는 슬라이드 개수
         slidesToScroll: 1,   // n장씩 뒤로 넘어가게 함
-        nextArrow: <SampleNextArrow className="top-1/2" />,
+        nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
       };
       
       return (
-        <section>
+        <section className="flex justify-center relative">
             <StyledSlider {...settings}>
                 {banners.map((banner, index) => (
                 <div key={index}>
