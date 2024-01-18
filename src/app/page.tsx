@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import MainBanner from '@/components/main/MainBanner'
 
 export default function Home() {
   return (
-    <main className="flex bg-white min-h-screen flex-col items-center justify-between p-24">
-      hello
+    <main className="items-center justify-between">
+      <MainBanner></MainBanner>
     </main>
   )
 }
