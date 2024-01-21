@@ -8,7 +8,7 @@ const starImgUrl: string = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3
 
 export default function NavLeftComponent () {
     return (
-        <div style={{ width: '205.15px', height: '39px' }} className="flex">
+        <div style={{ width: '205.15px', height: '39px' }} className="flex justify-start">
             <div className="flex px-[15px] items-center">
                 <Image src={appDownloadLogoUrl} alt="앱 다운로드 로고" width={16} height={17} style={{ marginRight: '5px' }}></Image>
                 {/* 웹에서는 현재 페이지로 이동 */}

@@ -4,7 +4,7 @@ import Image from "next/image";
 // 검색창 컴포넌트
 import SearchInput from "./SearchInput";
 // 카테고리 컴포넌트
-import CategoryTap from "./MenuButton";
+import CategoryTap from "../molecules/MenuButton";
 
 interface ImageButtonProps {
     src: string;
