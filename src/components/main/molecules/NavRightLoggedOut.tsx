@@ -1,5 +1,5 @@
+// 로그아웃 일 때의 컴포넌트
 export default function NavRightLoggedOut () {
-    // user 정보 가져오기
 
     return (
         <div className="flex items-center">
