@@ -16,8 +16,8 @@ export default function SignUp () {
     return (
         <>
             {isOpen && (
-                    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <div className="w-[460px] h-[366px] pt-[40px] bg-[#F7F7F7] rounded-[10px] relative"> 
+                    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-xl">
+                        <div className="w-[460px] h-[386px] pt-[40px] bg-[#F7F7F7] rounded-[10px] relative"> 
                             
                             {/* 모달 닫기 버튼 */}
                             <button onClick={closeModal}>
