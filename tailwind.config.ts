@@ -14,9 +14,10 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        'red': '#F72F33', // 번개장터 빨간색 
+        red: '#F72F33', // 번개장터 빨간색
         'dark-black': '#212121', // 번개장터 검정색 (디폴트 값으로 설정해뒀음)
-      }
+        'light-gray': 'rgb(178, 178, 178)',
+      },
     },
   },
   plugins: [],
