@@ -2,11 +2,12 @@
 
 import Image from "next/image"
 import { useState } from "react";
+import useLogOutModalStore from "@/zustand/LogOutModalStore";
 
 // 로그인 일 때의 컴포넌트
 export default function NavRightLoggedIn () {
     // 로그인일 때 로그아웃 모달 창 오픈
-
+    const { openLogOutModal } = useLogOutModalStore();
 
     // TODO: 알림 창 CSS
     // 알림 창 hover
@@ -17,7 +18,7 @@ export default function NavRightLoggedIn () {
 
     return (
         <div className="flex items-center">
-            <div className="text-[13px] font-[#666666] px-[15px] cursor-auto">로그아웃</div>
+            <div className="text-[13px] font-[#666666] px-[15px] cursor-auto" onClick={openLogOutModal}>로그아웃</div>
 
             {/* TODO: 최근 알림 API */}
             {/* 알림 */}
