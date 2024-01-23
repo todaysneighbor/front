@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import KaKaoLonIn from "./KaKaoLogIn";
-import { useState } from "react";
 
 // zustand 상태 관리
 import useModalStore from "@/zustand/LogInModalStore";
