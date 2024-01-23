@@ -3,7 +3,7 @@ import NavRightLoggedOut from "../molecules/NavRightLoggedOut"
 import NavRightLoggedIn from "../molecules/NavRightLoggedIn";
 
 export default function Header () {
-    let user: boolean = true;
+    let user: boolean = false;
 
     return (
         <div style={{width: '1024px', height: '39px'}} className="flex justify-between" >
