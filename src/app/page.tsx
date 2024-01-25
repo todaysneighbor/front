@@ -1,10 +1,14 @@
 'use client'
 import Image from 'next/image'
+
+// 컴포넌트
 import MainBanner from '@/components/main/organisms/MainBanner'
 import AppDownLoadBanner from '@/components/main/organisms/AppDownLoadBanner'
 import SignUp from '@/components/main/molecules/SignUp'
 import LogOut from '@/components/main/molecules/LogOut'
-  
+import TodayRecommend from '@/components/main/molecules/TodayRecommend'
+
+// 상태관리
 import useModalStore from '@/zustand/LogInModalStore'
 import useLogOutModalStore from '@/zustand/LogOutModalStore'
 
@@ -21,6 +25,9 @@ export default function Home() {
 
       {/* 앱 다운로드 배너 */}
       <AppDownLoadBanner></AppDownLoadBanner>
+
+      {/* 오늘의 상품 추천 */}
+      <TodayRecommend></TodayRecommend>
       
       {/* 로그인 모달창 */}
       {isOpen && (
