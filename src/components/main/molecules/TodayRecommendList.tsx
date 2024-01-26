@@ -3,12 +3,13 @@ import { TodayRecommendItemProps } from "@/stories/TodayRecommendItem"
 
 
 export default function TodayRecommendList () {
+    // TODO: React Query, 무한 스크롤
     const itemList = [
         {
             itemId: 1,
             imgSrc: 'https://media.bunjang.co.kr/product/245580000_1_1706012679_w292.jpg',
             itemPrice: 4500,
-            itemDate: new Date(2024, 0, 25, 5),
+            itemDate: new Date(2024, 0, 26, 5),
             itemName: '포챠코 인형'
         },
         {
@@ -56,7 +57,7 @@ export default function TodayRecommendList () {
 
     ]
     return (
-        <>
+        <div className="flex flex-wrap">
             {itemList && (
                 itemList.map((item: TodayRecommendItemProps) => (
                     <TodayRecommendItem
@@ -68,6 +69,6 @@ export default function TodayRecommendList () {
                     ></TodayRecommendItem>
                 ))
             )}
-        </>
+        </div>
     )
 }
