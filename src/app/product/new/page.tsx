@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import ImageInput from '@/components/product/molecules/ImagesInput'
 import NameInput from '@/components/product/molecules/NameInput'
+import CategoryInput from '@/components/product/molecules/CategoryInput'
 
 export default function NewProduct() {
   return (
@@ -9,6 +10,7 @@ export default function NewProduct() {
       <form>
         <ImageInput />
         <NameInput />
+        <CategoryInput />
       </form>
     </main>
   )
