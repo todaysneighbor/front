@@ -6,7 +6,7 @@ import MainBanner from '@/components/main/organisms/MainBanner'
 import AppDownLoadBanner from '@/components/main/organisms/AppDownLoadBanner'
 import SignUp from '@/components/main/molecules/SignUp'
 import LogOut from '@/components/main/molecules/LogOut'
-import TodayRecommend from '@/components/main/molecules/TodayRecommend'
+import TodayRecommend from '@/components/main/organisms/TodayRecommend'
 
 // 상태관리
 import useModalStore from '@/zustand/LogInModalStore'

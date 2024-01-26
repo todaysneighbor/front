@@ -24,8 +24,8 @@ type Story = StoryObj<typeof meta>;
 export const Default = {
   args: {
     itemId: 1,
-    imgSrc: 'https://media.bunjang.co.kr/product/250825353_1_1706145841_w292.jpg',
-    itemName: '멋진 구두',
+    imgSrc: 'https://media.bunjang.co.kr/product/249782749_1_1705996544_w292.jpg',
+    itemName: '슬로건 팝니다',
     itemPrice: 30000,
     itemDate: new Date(2024, 0, 25, 12, 0)
 
@@ -42,3 +42,5 @@ export const LongItem = {
     itemDate: new Date(2024, 0, 26, 12, 0)  
   }
 }
+
+// 리스트 ..

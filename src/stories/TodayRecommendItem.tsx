@@ -44,7 +44,7 @@ const Information = styled.div`
     align-items: center;
 `
 
-interface TodayRecommendItemProps {
+export interface TodayRecommendItemProps {
     imgSrc: string;
     itemName: string;
     itemPrice: number;
