@@ -1,12 +1,13 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import Label from '../atoms/Label'
 import { bigCategory, middleCategory, smallCategory } from '@/data/category'
 
 const Category = styled.div`
-  display: flex;
+  display: flex !important;
+  width: 100%;
   border: 1px solid rgb(204 204 204);
   ul {
     display: inline-block;
@@ -24,6 +25,15 @@ const CategoryInput = () => {
   const [big, setBig] = useState<string>('')
   const [middle, setMiddle] = useState<string>('')
   const [small, setSmall] = useState<string>('')
+  const [target, setTarget] = useState<Element | null>(null)
+
+  useEffect(() => {
+    if (document) {
+      setTarget(document.querySelector('#portal'))
+    }
+  }, [])
+
+  if (!target) return <></>
 
   return (
     <div className="flex">
@@ -35,7 +45,7 @@ const CategoryInput = () => {
           </div>
         }
       ></Label>
-      <div>
+      <div className="w-full">
         <Category>
           {/* 대분류 */}
           <ul className="w-[280px] h-[300px]  overflow-y-scroll">
