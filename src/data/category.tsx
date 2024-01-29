@@ -1,9 +1,18 @@
-export const bigCategory = {
+interface BigCategoryType {
+  // BigType 인터페이스는 키가 숫자이고 값이 문자열인 객체임을 나타내는 인덱스 서명 [key: number]: string을 정의합니다.
+  [key: number]: string
+}
+
+export const bigCategory: BigCategoryType = {
   0: '디지털',
   1: '가전제품',
 }
 
-export const middleCategory = {
+interface OtherCategoryType {
+  [category: string]: string[]
+}
+
+export const middleCategory: OtherCategoryType = {
   디지털: [
     '휴대폰',
     '웨어러블(워치/밴드)',
@@ -14,7 +23,7 @@ export const middleCategory = {
   가전제품: ['생활가전', '주방가전', '미용가전', '냉장고'],
 }
 
-export const smallCategory = {
+export const smallCategory: OtherCategoryType = {
   휴대폰: ['스마트폰', '일반폰', '케이스/보호필름/액세서리'],
   '웨어러블(워치/밴드)': [
     '스마트워치/밴드',

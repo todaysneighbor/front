@@ -68,45 +68,41 @@ const CategoryInput = () => {
           </ul>
           {/* 중분류 */}
           <ul className="w-[280px] h-[300px] border-s border-border-gray overflow-y-scroll">
-            {big && (middleCategory as any)[big]
-              ? (middleCategory as any)[big].map(
-                  ([index, value]: [string, string]) => (
-                    <li key={index} value={value}>
-                      <button
-                        className="w-full h-full text-left px-2"
-                        value={value}
-                        onClick={(e) => {
-                          e.preventDefault()
-                          setMiddle(value)
-                          setSmall('')
-                        }}
-                      >
-                        {value}
-                      </button>
-                    </li>
-                  ),
-                )
+            {big && middleCategory[big]
+              ? (middleCategory as any)[big].map((value: string) => (
+                  <li key={value} value={value}>
+                    <button
+                      className="w-full h-full text-left px-2"
+                      value={value}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setMiddle(value)
+                        setSmall('')
+                      }}
+                    >
+                      {value}
+                    </button>
+                  </li>
+                ))
               : null}
           </ul>
           {/* 소분류 */}
           <ul className="w-[280px] h-[300px] border-s border-border-gray overflow-y-scroll">
-            {middle && (smallCategory as any)[middle]
-              ? (smallCategory as any)[middle].map(
-                  ([index, value]: [string, string]) => (
-                    <li key={index} value={value}>
-                      <button
-                        className="w-full h-full text-left px-2"
-                        value={value}
-                        onClick={(e) => {
-                          e.preventDefault()
-                          setSmall(value)
-                        }}
-                      >
-                        {value}
-                      </button>
-                    </li>
-                  ),
-                )
+            {middle && smallCategory[middle]
+              ? (smallCategory as any)[middle].map((value: string) => (
+                  <li key={value} value={value}>
+                    <button
+                      className="w-full h-full text-left px-2"
+                      value={value}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setSmall(value)
+                      }}
+                    >
+                      {value}
+                    </button>
+                  </li>
+                ))
               : null}
           </ul>
         </Category>
