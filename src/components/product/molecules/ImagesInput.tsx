@@ -1,7 +1,22 @@
 'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
+import styled from 'styled-components'
+
+import { FaCamera } from 'react-icons/fa'
+
 import Label from '../atoms/Label'
+
+const ImgBox = styled.div`
+    input {
+        width: 200px;
+        height: 200px;
+        background-color: "#b2b2b2";
+        border: 1px solid rgb(204, 204, 204)
+        opacity: 0;
+    }
+
+`
 
 import imageCompression from 'browser-image-compression'
 
@@ -12,10 +27,10 @@ export interface ImageInputProps {
 
 export default function ImageInput() {
   const [img, setImg] = useState<String>('')
-  const [imgs, setImgs] = useState<File[]|any[]>([])
+  const [imgs, setImgs] = useState<File[] | any[]>([])
 
-  // imgs length <= 12, if == 12 make disable
-
+  // TODO: imgs length <= 12, if == 12 make disable
+  // 이미지 파일 첨부 func
   const addPreviewImage = async (file: File) => {
     if (file) {
       // 이미지 파일 크기 옵션
@@ -33,7 +48,7 @@ export default function ImageInput() {
         return await new Promise((resolve) => {
           reader.onload = (e) => {
             setImgs((imgs) => [...imgs, reader.result])
-            resolve()
+            resolve(true)
           }
         })
       } catch (error) {
@@ -41,14 +56,16 @@ export default function ImageInput() {
       }
     }
   }
-  const deletePreviewImage = (index:number, arr:File[]) => {
-    if(arr.length){
-      return [...arr.slice(0, index), ...arr.slice(index + 1)];
+  // 삭제하기 버튼 func
+  const deletePreviewImage = (index: number, arr: File[]) => {
+    if (arr.length) {
+      return [...arr.slice(0, index), ...arr.slice(index + 1)]
     }
     return arr
   }
+
   return (
-    <div className="flex">
+    <ImgBox className="flex">
       <Label
         props={
           <div>
@@ -60,49 +77,60 @@ export default function ImageInput() {
           </div>
         }
       ></Label>
-      <label htmlFor="Img"></label>
-      <input
-        type="file"
-        name="Img"
-        className="/hidden"
-        multiple
-        onChange={(e) =>
-          // 파일 갯수만큼 돌아야함
-          Array.from(e.target.files as ArrayLike<File>).map((file, index) => {
-            addPreviewImage(file as File)
-          })
-        }
-      />
-      이미지 사진
-      {imgs.length}
-      <div className='flex '>
+      {/* <label htmlFor="Img"></label> */}
+      <ul className="flex flex-wrap overflow-x-hidden w-[856px]">
+        <li className="w-[202px] h-[202px] relative flex flex-col justify-center items-center border-border-gray border rounded-sm bg-bg-gray me-[1rem]">
+          <FaCamera size={60} color="rgb(204, 204, 204)" />
+          <span className="text-[#666666] text-[1rem]">이미지 등록</span>
+          <input
+            type="file"
+            name="Img"
+            accept="image/jpg, image/jpeg, image/png"
+            className="opacity-0 absolute"
+            multiple
+            onChange={(e) =>
+              // 파일 갯수만큼 돌아야함
+              Array.from(e.target.files as ArrayLike<File>).map(
+                (file, index) => {
+                  addPreviewImage(file as File)
+                },
+              )
+            }
+          />
+        </li>
 
-      {imgs
-        ? imgs.map((imagePreview, index) => (
-          <div key={index} className='relative'>
-              <button type="button" className="absolute"
-                onClick={(e) =>
-                  // array 삭제 기능
-                  {e.preventDefault()
-                  setImgs((imgs)=>deletePreviewImage(index, [...imgs]))}
-                }
-                >
-                ⅹ
-              </button>
-              <div>{index}</div>
-              <Image
-                priority
-                src={imagePreview}
-                width={200}
-                height={200}
-                style={{objectFit: "cover"}}
-                onLoad={event => console.log("loading")}
-                alt="이미지 미리보기"
-                />
-            </div>
-          ))
-          : null}
-          </div>
-    </div>
+        <li className="flex ">
+          {imgs
+            ? imgs.map((imagePreview, index) => (
+                <div key={index} className="relative">
+                  <button
+                    type="button"
+                    className="absolute"
+                    onClick={(e) =>
+                      // array 삭제 기능
+                      {
+                        e.preventDefault()
+                        setImgs((imgs) => deletePreviewImage(index, [...imgs]))
+                      }
+                    }
+                  >
+                    ⅹ
+                  </button>
+                  <div>{index}</div>
+                  <Image
+                    priority
+                    src={imagePreview}
+                    width={200}
+                    height={200}
+                    style={{ objectFit: 'cover' }}
+                    onLoad={(event) => console.log('loading')}
+                    alt="이미지 미리보기"
+                  />
+                </div>
+              ))
+            : null}
+        </li>
+      </ul>
+    </ImgBox>
   )
 }
