@@ -3,6 +3,8 @@ import ImageInput from '@/components/product/molecules/ImagesInput'
 import NameInput from '@/components/product/molecules/NameInput'
 import CategoryInput from '@/components/product/molecules/CategoryInput'
 import ExchangeInput from '@/components/product/molecules/ExchangeInput'
+import QualityInput from '@/components/product/molecules/QualityInput'
+import PriceInput from '@/components/product/molecules/PriceInput'
 
 export default function NewProduct() {
   return (
@@ -13,6 +15,8 @@ export default function NewProduct() {
         <NameInput />
         <CategoryInput />
         <ExchangeInput />
+        <QualityInput />
+        <PriceInput />
       </form>
     </main>
   )
