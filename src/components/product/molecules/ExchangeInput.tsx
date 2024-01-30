@@ -1,4 +1,6 @@
 'use client'
+import { useState, useEffect } from 'react'
+
 import Label from '../atoms/Label'
 import styled from 'styled-components'
 
@@ -35,6 +37,16 @@ const Radio = styled.div`
 `
 
 const ExchangeInput = () => {
+  const [target, setTarget] = useState<Element | null>(null)
+
+  useEffect(() => {
+    if (document) {
+      setTarget(document.querySelector('#portal'))
+    }
+  }, [])
+
+  if (!target) return <></>
+
   return (
     <div className="flex">
       <Label
