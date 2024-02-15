@@ -68,7 +68,7 @@ const PriceInput = () => {
           ></input>
           <span className="absolute right-4 top-3 text-border-gray ">원</span>
         </div>
-        <Radio className="flex items-center">
+        <Radio className="flex items-center mt-2">
           <input
             type="radio"
             id="배송비포함"

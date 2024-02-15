@@ -19,6 +19,7 @@ const ImgBox = styled.div`
 `
 
 import imageCompression from 'browser-image-compression'
+import Line from '../atoms/Line'
 
 export interface ImageInputProps {
   image: String
@@ -65,72 +66,77 @@ export default function ImageInput() {
   }
 
   return (
-    <ImgBox className="flex">
-      <Label
-        props={
-          <div>
-            <span>상품이미지</span>
-            <span className="text-red">*</span>
-            <span className="text-light-gray text-[16px] ms-[0.25rem] leading-5">
-              ({imgs.length}/12)
-            </span>
-          </div>
-        }
-      ></Label>
-      {/* <label htmlFor="Img"></label> */}
-      <ul className="flex flex-wrap overflow-x-hidden w-[856px]">
-        <li className="w-[202px] h-[202px] relative flex flex-col justify-center items-center border-border-gray border rounded-sm bg-bg-gray me-[1rem]">
-          <FaCamera size={60} color="rgb(204, 204, 204)" />
-          <span className="text-[#666666] text-[1rem]">이미지 등록</span>
-          <input
-            type="file"
-            name="Img"
-            accept="image/jpg, image/jpeg, image/png"
-            className="opacity-0 absolute"
-            multiple
-            onChange={(e) =>
-              // 파일 갯수만큼 돌아야함
-              Array.from(e.target.files as ArrayLike<File>).map(
-                (file, index) => {
-                  addPreviewImage(file as File)
-                },
-              )
-            }
-          />
-        </li>
+    <div>
+      <ImgBox className="flex">
+        <Label
+          props={
+            <div>
+              <span>상품이미지</span>
+              <span className="text-red">*</span>
+              <span className="text-light-gray text-[16px] ms-[0.25rem] leading-5">
+                ({imgs.length}/12)
+              </span>
+            </div>
+          }
+        ></Label>
+        {/* <label htmlFor="Img"></label> */}
+        <ul className="flex flex-wrap overflow-x-hidden w-[856px]">
+          <li className="w-[202px] h-[202px] relative flex flex-col justify-center items-center border-border-gray border rounded-sm bg-bg-gray me-[1rem]">
+            <FaCamera size={60} color="rgb(204, 204, 204)" />
+            <span className="text-[#666666] text-[1rem]">이미지 등록</span>
+            <input
+              type="file"
+              name="Img"
+              accept="image/jpg, image/jpeg, image/png"
+              className="opacity-0 absolute"
+              multiple
+              onChange={(e) =>
+                // 파일 갯수만큼 돌아야함
+                Array.from(e.target.files as ArrayLike<File>).map(
+                  (file, index) => {
+                    addPreviewImage(file as File)
+                  },
+                )
+              }
+            />
+          </li>
 
-        <li className="flex ">
-          {imgs
-            ? imgs.map((imagePreview, index) => (
-                <div key={index} className="relative">
-                  <button
-                    type="button"
-                    className="absolute"
-                    onClick={(e) =>
-                      // array 삭제 기능
-                      {
-                        e.preventDefault()
-                        setImgs((imgs) => deletePreviewImage(index, [...imgs]))
+          <li className="flex ">
+            {imgs
+              ? imgs.map((imagePreview, index) => (
+                  <div key={index} className="relative">
+                    <button
+                      type="button"
+                      className="absolute"
+                      onClick={(e) =>
+                        // array 삭제 기능
+                        {
+                          e.preventDefault()
+                          setImgs((imgs) =>
+                            deletePreviewImage(index, [...imgs]),
+                          )
+                        }
                       }
-                    }
-                  >
-                    ⅹ
-                  </button>
-                  <div>{index}</div>
-                  <Image
-                    priority
-                    src={imagePreview}
-                    width={200}
-                    height={200}
-                    style={{ objectFit: 'cover' }}
-                    onLoad={(event) => console.log('loading')}
-                    alt="이미지 미리보기"
-                  />
-                </div>
-              ))
-            : null}
-        </li>
-      </ul>
-    </ImgBox>
+                    >
+                      ⅹ
+                    </button>
+                    <div>{index}</div>
+                    <Image
+                      priority
+                      src={imagePreview}
+                      width={200}
+                      height={200}
+                      style={{ objectFit: 'cover' }}
+                      onLoad={(event) => console.log('loading')}
+                      alt="이미지 미리보기"
+                    />
+                  </div>
+                ))
+              : null}
+          </li>
+        </ul>
+      </ImgBox>{' '}
+      {/* <Line /> */}
+    </div>
   )
 }
