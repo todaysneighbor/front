@@ -13,7 +13,7 @@ import QuantityInput from '@/components/product/molecules/QuantityInput'
 
 export default function NewProduct() {
   return (
-    <main className="flex min-h-screen w-full flex-col items-start p-24">
+    <main className="flex min-h-screen w-full flex-col items-start px-24 pt-10">
       <FormHeader />
       <form id="portal">
         <ImageInput />
