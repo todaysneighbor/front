@@ -24,13 +24,16 @@ const sampleTalkRoomList: TalkRoomType[] = [
   sampleTalkRoom,
 ]
 
-export default function TalkRoomList() {
+export default function TalkRoomList(props: {
+  props: React.Dispatch<React.SetStateAction<any>>
+}) {
   return (
     <div className="">
       <div className="text-[28px] font-bold p-4">전체 대화</div>
       {sampleTalkRoomList?.map((item: TalkRoomType) => {
         return (
           <div>
+            {/* TODO:각 채팅방 아이템은 채팅을 가져오는 링크가 되어야 한다 */}
             <TalkRoomItem props={item} />
           </div>
         )

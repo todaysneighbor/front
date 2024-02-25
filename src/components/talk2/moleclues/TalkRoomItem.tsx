@@ -12,7 +12,7 @@ export default function TalkRoomItem({ props }: TalkRoomItemProps) {
 
   return (
     <div>
-      <div className="grid place-items-center grid-cols-8 my-2 p-3 hover:bg-hover-gray cursor-pointer font-bold">
+      <div className="grid place-items-center content-center grid-cols-8 my-2 p-3 hover:bg-hover-gray cursor-pointer font-bold">
         <div className="w-[50px] h-[50px] relative">
           <Image
             fill
@@ -21,11 +21,11 @@ export default function TalkRoomItem({ props }: TalkRoomItemProps) {
             className="rounded-full"
           ></Image>
         </div>
-        <div className="col-span-6 ps-2 pe-auto w-full h-full">
-          <div className="">{StoreName}</div>
+        <div className="col-span-6 ps-2 pe-auto w-full h-full grid grid-cols-1 items-center">
+          <div>{StoreName}</div>
           <div
             style={{ gridTemplateColumns: '3fr 1fr' }}
-            className="overflow-hidden font-semibold text-tx-gray text-[12px] w-full grid"
+            className="font-semibold text-tx-gray text-[12px] w-full grid"
           >
             {/* truncate: 줄바꿈 방지, 오버플로우 히든, ... 처리 */}
             <span className="truncate">{LastTalkLine}</span>
