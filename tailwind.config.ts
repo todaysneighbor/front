@@ -19,6 +19,8 @@ const config: Config = {
         c: 'rgb(178, 178, 178)',
         'border-gray': 'rgb(204, 204, 204)',
         'bg-gray': 'rgb(250, 250, 250)',
+        'tx-gray': '#b2b2b2',
+        'hover-gray': '#f2f2f2',
       },
     },
   },
