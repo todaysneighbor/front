@@ -11,8 +11,8 @@ export default function NewProduct() {
   useEffect(() => {})
 
   return (
-    <div className="bg-red w-full h-full">
-      <div className="bg-white w-[1024px] pt-[56px] mb-[24px] mx-auto grid grid-cols-2">
+    <div className="w-full h-full bg-bg-gray">
+      <div className="w-[1024px] mb-[24px] mx-auto grid grid-cols-2 gap">
         <TalkRoomList props={setTalkContent} /> {/* 채팅방 영역 */}
         <TalkItemList props={talkContent} /> {/* 채팅 영역 */}
       </div>

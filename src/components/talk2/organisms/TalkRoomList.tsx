@@ -28,7 +28,7 @@ export default function TalkRoomList(props: {
   props: React.Dispatch<React.SetStateAction<any>>
 }) {
   return (
-    <div className="">
+    <div className="border border-s-0 border-t-0 border-b-0">
       <div className="text-[28px] font-bold p-4">전체 대화</div>
       {sampleTalkRoomList?.map((item: TalkRoomType) => {
         return (
