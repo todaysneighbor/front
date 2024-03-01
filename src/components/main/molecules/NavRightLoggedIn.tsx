@@ -1,45 +1,118 @@
 'use client'
 
-import Image from "next/image"
-import { useState } from "react";
-import useLogOutModalStore from "@/zustand/LogOutModalStore";
+import Image from 'next/image'
+import { useState } from 'react'
+import styled from 'styled-components'
+// import useLogOutModalStore from "@/zustand/LogOutModalStore";
 
 // 로그인 일 때의 컴포넌트
-export default function NavRightLoggedIn () {
-    // 로그인일 때 로그아웃 모달 창 오픈
-    const { openLogOutModal } = useLogOutModalStore();
+export default function NavRightLoggedIn() {
+  // 로그인일 때 로그아웃 모달 창 오픈
+  // const { openLogOutModal } = useLogOutModalStore();
+  const [isHovered, setIsHovered] = useState<boolean>(false)
 
-    // TODO: 알림 창 CSS
-    // 알림 창 hover
-    const [isHovered, setIsHovered] = useState<boolean>(false);
+  // 내 상점 hover
+  const [isShopHovered, setIsShopHovered] = useState<boolean>(false)
 
-    // 내 상점 hover
-    const [isShopHovered, setIsShopHovered] = useState<boolean>(false);
+  return (
+    <Container>
+      <StyledText>로그아웃</StyledText>
 
-    return (
-        <div className="flex items-center">
-            <div className="text-[13px] font-[#666666] px-[15px] cursor-auto" onClick={openLogOutModal}>로그아웃</div>
+      <StyledText
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        알림
+        {isHovered && (
+          <NotificationContainer
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <Image
+              src="/alram bell.png"
+              alt="빈 알림 이미지"
+              width={20}
+              height={23}
+              className="mb-[10px]"
+            ></Image>
+            최근 알림이 없습니다
+          </NotificationContainer>
+        )}
+      </StyledText>
 
-            {/* TODO: 최근 알림 API */}
-            {/* 알림 */}
-            <div className="relative h-full items-center flex text-[13px] font-[#666666] px-[15px] cursor-auto" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>알림</div>
-            {isHovered && (
-                <div className="bg-[#f9f9f9] text-[#cccccc] text-[12px] p-10 absolute top-[39px] w-[400px] h-[131px] flex flex-col items-center z-20 border border-1/2 left-2/3" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-                <Image src="/alram bell.png" alt="빈 알림 이미지" width={20} height={23} className="mb-[10px]"></Image>
-                최근 알림이 없습니다
-                </div>
-            )}
-
-            {/* TODO: 내 상점 링크 연결(내 상점 번호 필요) */}
-            <div className="relative flex h-full items-center text-[13px] font-[#666666] px-[15px] cursor-auto" onMouseEnter={() => setIsShopHovered(true)} onMouseLeave={() => setIsShopHovered(false)}>내 상점</div>
-            {isShopHovered && (
-                <div className="absolute top-[39px] bg-white w-[88px] h-[134px] border border-1/2 flex flex-col items-center justify-center z-20 ml-[120px]" onMouseEnter={() => setIsShopHovered(true)} onMouseLeave={() => setIsShopHovered(false)}>
-                    <div className="text-[#888888] text-[13px] mb-[10px] hover:text-[#212121]">내 상품</div>
-                    <div className="text-[#888888] text-[13px] mb-[10px] hover:text-[#212121]">찜한 상품</div>
-                    <div className="text-[#888888] text-[13px] mb-[10px] hover:text-[#212121]">계정설정</div>
-                    <div className="text-[#888888] text-[13px] mb-[10px] hover:text-[#212121]">고객센터</div>
-                </div>
-            )}
-        </div>
-    )
+      <ShopContainer
+        onMouseEnter={() => setIsShopHovered(true)}
+        onMouseLeave={() => setIsShopHovered(false)}
+      >
+        <StyledText>내 상점</StyledText>
+        {isShopHovered && (
+          <ShopSubMenu
+            onMouseEnter={() => setIsShopHovered(true)}
+            onMouseLeave={() => setIsShopHovered(false)}
+          >
+            <SubMenuItem>내 상품</SubMenuItem>
+            <SubMenuItem>찜한 상품</SubMenuItem>
+            <SubMenuItem>계정설정</SubMenuItem>
+            <SubMenuItem>고객센터</SubMenuItem>
+          </ShopSubMenu>
+        )}
+      </ShopContainer>
+    </Container>
+  )
 }
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const StyledText = styled.div`
+  font-size: 13px;
+  color: #666666;
+  padding: 0 15px;
+  cursor: pointer;
+`
+
+const NotificationContainer = styled.div`
+  background-color: #f9f9f9;
+  color: #cccccc;
+  font-size: 12px;
+  padding: 10px;
+  position: absolute;
+  top: 39px;
+  width: 400px;
+  height: 131px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #888888;
+`
+
+const ShopContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`
+
+const ShopSubMenu = styled.div`
+  position: absolute;
+  top: 39px;
+  background-color: #ffffff;
+  width: 88px;
+  height: 134px;
+  border: 1px solid #888888;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+const SubMenuItem = styled.div`
+  color: #888888;
+  font-size: 13px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  &:hover {
+    color: #212121;
+  }
+`
