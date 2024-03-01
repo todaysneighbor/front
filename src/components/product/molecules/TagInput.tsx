@@ -14,7 +14,7 @@ const TagInput = () => {
   const [tags, setTags] = useState<string[]>([])
   const [tag, setTag] = useState<string>('')
 
-  const addTag = (e: InputEvent) => {
+  const addTag = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement
     if (target) {
       setTag(target.value)
