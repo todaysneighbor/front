@@ -17,7 +17,7 @@ const config: Config = {
         red: '#F72F33', // 번개장터 빨간색
         'dark-black': '#212121', // 번개장터 검정색 (디폴트 값으로 설정해뒀음)
         c: 'rgb(178, 178, 178)',
-        'border-gray': 'rgb(204, 204, 204)',
+        'border-gray': 'rgb(204, 204, 204)', //#cccccc
         'bg-gray': 'rgb(250, 250, 250)',
         'tx-gray': '#b2b2b2',
         'hover-gray': '#f2f2f2',
