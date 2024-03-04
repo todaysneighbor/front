@@ -1,24 +1,84 @@
-'use client'
+import { ModalProps } from './SignUp'
 
-import useLogOutModalStore from "@/zustand/LogOutModalStore"
+import styled from 'styled-components'
 
-export default function LogOut () {
-    const { isLogOutOpen, closeLogOutModal } = useLogOutModalStore();
-    return (
-        <>
-            {isLogOutOpen && (
-                <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-xl">
-                    <div className="bg-white rounded w-[296px] h-[182px] p-[24px] flex flex-col justify-center items-center">
-                        <div className="font-bold text-[18px] mb-4">로그아웃</div>
-                        <div className="text-[15px] mb-6">로그아웃 하시겠습니까?</div>
-                        <div className="flex">
-                            <button className="flex items-center justify-center bg-[#f4f4fa] text-[#72707f] font-4 w-[120px] h-12" onClick={closeLogOutModal}>취소</button>
-                            {/* TODO: API 확인 연결 후 닫기로 기능 변경 */}
-                            <button className="flex items-center justify-center bg-[#ff5058] text-white w-[120px] h-12 ms-2" onClick={closeLogOutModal}>확인</button>
-                        </div>
-                        </div>
-                </div>
-            )}
-        </>
-    )
+export const LogOut = ({ isOpen, setIsOpen }: ModalProps) => {
+  return (
+    <>
+      {isOpen && (
+        <StyledModal>
+          <ModalContent>
+            <DialogTitle>로그아웃</DialogTitle>
+            <DialogText>로그아웃 하시겠습니까?</DialogText>
+            <ButtonContainer>
+              <CancelButton onClick={() => setIsOpen(false)}>취소</CancelButton>
+              <ConfirmButton onClick={() => setIsOpen(false)}>
+                확인
+              </ConfirmButton>
+            </ButtonContainer>
+          </ModalContent>
+        </StyledModal>
+      )}
+    </>
+  )
 }
+
+const StyledModal = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+`
+
+const ModalContent = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  width: 285px;
+  height: 182px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const DialogTitle = styled.div`
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+`
+
+const DialogText = styled.div`
+  font-size: 15px;
+  margin-bottom: 6px;
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  margin-top: 12px;
+`
+
+const Button = styled.button`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 115px;
+  border: none;
+`
+
+const CancelButton = styled(Button)`
+  background-color: #f4f4fa;
+  color: #72707f;
+  margin-right: 2px;
+`
+
+const ConfirmButton = styled(Button)`
+  background-color: #ff5058;
+  color: white;
+  margin-left: 2px;
+`
