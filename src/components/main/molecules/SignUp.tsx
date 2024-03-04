@@ -14,19 +14,21 @@ export const SignUp = ({ isOpen, setIsOpen }: ModalProps) => {
   return (
     <>
       {isOpen && (
-        <ModalContainer>
-          <ModalContent>
-            {/* Close button */}
-            <CloseButton onClick={() => setIsOpen(false)}>
-              <Image
-                src="/modal cancel.png"
-                alt="Close icon"
-                width={24}
-                height={24}
-              />
-            </CloseButton>
+        <>
+          <Overlay />
+          <ModalContainer>
+            <ModalContent>
+              {/* Close button */}
+              <CloseButton onClick={() => setIsOpen(false)}>
+                <Image
+                  src="/modal cancel.png"
+                  alt="Close icon"
+                  width={24}
+                  height={24}
+                />
+              </CloseButton>
 
-            {/* Modal content */}
+              {/* Modal content */}
               <AppLogo
                 src={appDownloadLogoUrl}
                 alt="App Logo"
@@ -36,12 +38,11 @@ export const SignUp = ({ isOpen, setIsOpen }: ModalProps) => {
               <ModalTitle>번개장터로 중고거래 시작하기</ModalTitle>
               <ModalText>간편하게 가입하고 상품을 확인하세요</ModalText>
 
-              {/* Other components go here */}
               {/* 로그인 버튼 */}
               <KaKaoLonIn />
-        
-          </ModalContent>
-        </ModalContainer>
+            </ModalContent>
+          </ModalContainer>
+        </>
       )}
     </>
   )
@@ -52,7 +53,6 @@ const ModalContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 `
 
@@ -63,9 +63,9 @@ const ModalContent = styled.div`
   background-color: #f7f7f7;
   border-radius: 10px;
   position: relative;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 `
 
@@ -88,4 +88,13 @@ const ModalTitle = styled.div`
 const ModalText = styled.div`
   font-size: 14px;
   margin-bottom: 35px;
+`
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
 `

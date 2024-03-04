@@ -6,18 +6,23 @@ export const LogOut = ({ isOpen, setIsOpen }: ModalProps) => {
   return (
     <>
       {isOpen && (
-        <StyledModal>
-          <ModalContent>
-            <DialogTitle>로그아웃</DialogTitle>
-            <DialogText>로그아웃 하시겠습니까?</DialogText>
-            <ButtonContainer>
-              <CancelButton onClick={() => setIsOpen(false)}>취소</CancelButton>
-              <ConfirmButton onClick={() => setIsOpen(false)}>
-                확인
-              </ConfirmButton>
-            </ButtonContainer>
-          </ModalContent>
-        </StyledModal>
+        <>
+          <Overlay />
+          <StyledModal>
+            <ModalContent>
+              <DialogTitle>로그아웃</DialogTitle>
+              <DialogText>로그아웃 하시겠습니까?</DialogText>
+              <ButtonContainer>
+                <CancelButton onClick={() => setIsOpen(false)}>
+                  취소
+                </CancelButton>
+                <ConfirmButton onClick={() => setIsOpen(false)}>
+                  확인
+                </ConfirmButton>
+              </ButtonContainer>
+            </ModalContent>
+          </StyledModal>
+        </>
       )}
     </>
   )
@@ -81,4 +86,14 @@ const ConfirmButton = styled(Button)`
   background-color: #ff5058;
   color: white;
   margin-left: 2px;
+`
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
 `
