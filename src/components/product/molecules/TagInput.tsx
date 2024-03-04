@@ -23,17 +23,17 @@ const TagInput = () => {
     }
   }
 
+  const handleClick = () => {
+    setTags([...tags, tag])
+    setTag('')
+  }
+
   const handleKeyPress = (e: KeyboardEvent) => {
-    if (e.key == ' ' || e.code == 'Space' || e.keyCode == 32) {
+    if (e.key === ' ' || e.code === 'Space' || e.keyCode === 32) {
       handleClick()
       const target = e.target as HTMLInputElement
       target.blur() // placehorder 안나오는 문제 해결함 : 포커스 해제
     }
-  }
-
-  const handleClick = () => {
-    setTags([...tags, tag])
-    setTag('')
   }
 
   const removeTag = (i: number) => {
@@ -50,21 +50,21 @@ const TagInput = () => {
             <span>태그</span>
           </div>
         }
-      ></Label>
+      />
       <div className="flex flex-col justify-between gap-1">
         <div className="border border-border-gray h-[3rem] w-[856px] px-[1rem] flex justify-start items-center">
           {tags?.map((e, index) => (
             <div
-              key={index}
+              key={e}
               className="tagItem rounded-full me-2 bg-gray-200 px-1 flex justify-center items-center"
             >
               #{e}
-              <span
+              <button
                 className="deleteButton rounded-full bg-gray-400 ms-1 flex justify-center items-center text-white text-[12px] w-[15px] h-[15px]"
                 onClick={() => removeTag(index)}
               >
                 x
-              </span>
+              </button>
             </div>
           ))}
           {tags.length < 5 ? (
@@ -76,7 +76,7 @@ const TagInput = () => {
               onChange={(e) => addTag(e)}
               onKeyDown={(e) => handleKeyPress(e)}
               placeholder="태그를 입력해 주세요.(최대 5개)"
-            ></input>
+            />
           ) : null}
         </div>
         <div className="text-left text-[12px] text-dark-black ms-[0.25rem] leading-5">
