@@ -1,8 +1,9 @@
 'use client'
+
 import { useState, useEffect } from 'react'
 
-import Label from '../atoms/Label'
 import styled from 'styled-components'
+import Label from '../atoms/Label'
 
 const Radio = styled.div`
   input[type='radio'] {
@@ -36,7 +37,7 @@ const Radio = styled.div`
   }
 `
 
-const ExchangeInput = () => {
+function ExchangeInput() {
   const [target, setTarget] = useState<Element | null>(null)
 
   useEffect(() => {
@@ -45,7 +46,7 @@ const ExchangeInput = () => {
     }
   }, [])
 
-  if (!target) return <></>
+  if (!target) return null
 
   return (
     <div className="flex">
@@ -56,7 +57,7 @@ const ExchangeInput = () => {
             <span className="text-red">*</span>
           </div>
         }
-      ></Label>
+      />
       <Radio className="flex items-center">
         <input
           type="radio"

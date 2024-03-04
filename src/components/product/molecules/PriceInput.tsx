@@ -1,8 +1,9 @@
 'use client'
+
 import { useState, useEffect } from 'react'
 
-import Label from '../atoms/Label'
 import styled from 'styled-components'
+import Label from '../atoms/Label'
 
 const Radio = styled.div`
   input[type='radio'] {
@@ -36,7 +37,7 @@ const Radio = styled.div`
   }
 `
 
-const PriceInput = () => {
+function PriceInput() {
   const [price, setPrice] = useState<number>(0)
   const [deliveryFeeIncluded, setDeliveryFeeIncluded] = useState<Boolean>(false)
   const [target, setTarget] = useState<Element | null>(null)
@@ -47,7 +48,7 @@ const PriceInput = () => {
     }
   }, [])
 
-  if (!target) return <></>
+  if (!target) return null
 
   return (
     <div className="flex">
@@ -58,14 +59,15 @@ const PriceInput = () => {
             <span className="text-red">*</span>
           </div>
         }
-      ></Label>
+      />
       <div className="flex flex-col">
         <div className="relative w-[300px]">
           <input
             type="number"
+            value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
             className="border border-border-gray h-[3rem] w-full pe-10 px-[1rem] focus:outline-black"
-          ></input>
+          />
           <span className="absolute right-4 top-3 text-border-gray ">원</span>
         </div>
         <Radio className="flex items-center mt-2">

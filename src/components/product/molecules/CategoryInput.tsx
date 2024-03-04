@@ -1,9 +1,10 @@
 'use client'
+
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import Label from '../atoms/Label'
 import { bigCategory, middleCategory, smallCategory } from '@/data/category'
+import Label from '../atoms/Label'
 
 const Category = styled.div`
   display: flex !important;
@@ -21,7 +22,7 @@ const Category = styled.div`
   }
 `
 
-const CategoryInput = () => {
+function CategoryInput() {
   const [big, setBig] = useState<string>('')
   const [middle, setMiddle] = useState<string>('')
   const [small, setSmall] = useState<string>('')
@@ -33,7 +34,7 @@ const CategoryInput = () => {
     }
   }, [])
 
-  if (!target) return <></>
+  if (!target) return null
 
   return (
     <div className="flex">
@@ -44,7 +45,7 @@ const CategoryInput = () => {
             <span className="text-red">*</span>
           </div>
         }
-      ></Label>
+      />
       <div className="w-full">
         <Category>
           {/* 대분류 */}
@@ -52,6 +53,7 @@ const CategoryInput = () => {
             {Object.entries(bigCategory).map(([key, value]) => (
               <li key={key} value={value}>
                 <button
+                  type="button"
                   className="w-full h-full text-left px-2"
                   value={value}
                   onClick={(e) => {
@@ -72,6 +74,7 @@ const CategoryInput = () => {
               ? (middleCategory as any)[big].map((value: string) => (
                   <li key={value} value={value}>
                     <button
+                      type="button"
                       className="w-full h-full text-left px-2"
                       value={value}
                       onClick={(e) => {
@@ -92,6 +95,7 @@ const CategoryInput = () => {
               ? (smallCategory as any)[middle].map((value: string) => (
                   <li key={value} value={value}>
                     <button
+                      type="button"
                       className="w-full h-full text-left px-2"
                       value={value}
                       onClick={(e) => {
