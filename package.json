@@ -49,6 +49,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.0.4",
+    "eslint-plugin-html": "^8.0.0",
     "eslint-plugin-storybook": "^0.6.15",
     "postcss": "^8",
     "prettier-eslint": "^16.1.2",
