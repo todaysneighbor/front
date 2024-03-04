@@ -50,7 +50,7 @@ const TagInput = () => {
             <span>태그</span>
           </div>
         }
-      ></Label>
+      />
       <div className="flex flex-col justify-between gap-1">
         <div className="border border-border-gray h-[3rem] w-[856px] px-[1rem] flex justify-start items-center">
           {tags?.map((e, index) => (
@@ -59,12 +59,12 @@ const TagInput = () => {
               className="tagItem rounded-full me-2 bg-gray-200 px-1 flex justify-center items-center"
             >
               #{e}
-              <span
+              <button
                 className="deleteButton rounded-full bg-gray-400 ms-1 flex justify-center items-center text-white text-[12px] w-[15px] h-[15px]"
                 onClick={() => removeTag(index)}
               >
                 x
-              </span>
+              </button>
             </div>
           ))}
           {tags.length < 5 ? (
