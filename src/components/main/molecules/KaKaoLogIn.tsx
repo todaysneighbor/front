@@ -1,3 +1,4 @@
+import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 
@@ -17,7 +18,7 @@ export default function KaKaoLonIn() {
 
 const StyledKaKaoLogin = styled.div`
   display: flex;
-  items: center;
+  align-items: center;
   background-color: white;
   width: 280px;
   height: 38px;
@@ -32,7 +33,6 @@ const StyledKaKaoLogin = styled.div`
     color: white;
   }
 `
-
 
 const Text = styled.div`
   font-size: 14px;

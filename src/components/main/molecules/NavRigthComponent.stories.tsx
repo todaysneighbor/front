@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react'
 import NavRightLoggedIn from './NavRightLoggedIn'
 import NavRightLoggedOut from './NavRightLoggedOut'
+import React from 'react'
 
 const meta: Meta = {
   title: 'Nav/NavRight',

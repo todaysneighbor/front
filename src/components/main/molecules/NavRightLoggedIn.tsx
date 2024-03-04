@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import styled from 'styled-components'
 import { LogOut } from './LogOut'
+import React from 'react'
 
 // 로그인 일 때의 컴포넌트
 export default function NavRightLoggedIn() {
