@@ -1,13 +1,11 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
-
-import useModalStore from "@/zustand/LogInModalStore";
 
 interface Banner {
     href: string // 링크
@@ -77,8 +75,6 @@ function SampleNextArrow(props: any) {
 
 export default function MainBanner () {
     // 로그인 모달이 오픈되면 클릭이벤트 막기
-    const { isOpen, closeModal } = useModalStore();
-
     const settings = {
         dots: false,    // 슬라이드 밑 점
         infinite: true, // 무한 반복
@@ -90,20 +86,12 @@ export default function MainBanner () {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
       };
-
-      // TODO: 적용이 안되는 듯??
-      const handleCarouselClick = (e: any) => {
-        if (isOpen) {
-          e.preventDefault(); // 링크 클릭을 막음
-          closeModal();        // 모달 닫기
-        }
-      };
       
       return (
-        <section className="flex justify-center relative" >
+        <section className="flex justify-center relative z-0" >
             <StyledSlider {...settings}>
                 {banners.map((banner, index) => (
-                <div key={index} onClick={handleCarouselClick}>
+                <div key={index}>
                     <Link href={banner.href}>
                     <Image src={banner.src} alt="" width={1024} height={298.66} />
                     </Link>
