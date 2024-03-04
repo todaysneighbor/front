@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react';
-import NavRightLoggedIn from './NavRightLoggedIn';
-import NavRightLoggedOut from './NavRightLoggedOut';
+import type { Meta } from '@storybook/react'
+import NavRightLoggedIn from './NavRightLoggedIn'
+import NavRightLoggedOut from './NavRightLoggedOut'
 
 const meta: Meta = {
   title: 'Nav/NavRight',
@@ -10,14 +10,14 @@ const meta: Meta = {
     layout: 'fullscreen',
   },
   argTypes: {},
-} satisfies Meta<typeof NavRightLoggedIn>;
+} satisfies Meta<typeof NavRightLoggedIn>
 
-export default meta;
+export default meta
 
 export const Default = ({ isLoggedIn }: any) => {
-  return isLoggedIn ? <NavRightLoggedIn /> : <NavRightLoggedOut />;
-};
+  return isLoggedIn ? <NavRightLoggedIn /> : <NavRightLoggedOut />
+}
 
 Default.args = {
   isLoggedIn: true,
-};
+}

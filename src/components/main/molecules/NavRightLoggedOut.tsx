@@ -1,21 +1,22 @@
 'use client'
 
 import styled from 'styled-components'
-import Link from 'next/link'
-// import useModalStore from "@/zustand/LogInModalStore"
+import { SignUp } from './SignUp'
+import { useState } from 'react'
 
 // 로그아웃 일 때의 컴포넌트
 export default function NavRightLoggedOut() {
-  // 로그아웃일 때 로그인 모달 창 오픈 버튼이 되어줘야 한다
-  // const { openModal } = useModalStore();
-
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
-    <Container>
-      <Text>로그인/회원가입</Text>
-      <Link href="/mypage">
-        <Text>내상점</Text>
-      </Link>
-    </Container>
+    <>
+      <Container>
+        <Text onClick={() => setIsOpen((prev) => !prev)}>로그인/회원가입</Text>
+        <Text onClick={() => setIsOpen((prev) => !prev)}>내상점</Text>
+      </Container>
+
+      {/* 회원가입 모달 */}
+      <SignUp isOpen={isOpen} setIsOpen={setIsOpen} />
+    </>
   )
 }
 

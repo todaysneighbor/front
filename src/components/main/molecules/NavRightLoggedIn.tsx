@@ -3,12 +3,11 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import styled from 'styled-components'
-// import useLogOutModalStore from "@/zustand/LogOutModalStore";
+import { LogOut } from './LogOut'
 
 // 로그인 일 때의 컴포넌트
 export default function NavRightLoggedIn() {
-  // 로그인일 때 로그아웃 모달 창 오픈
-  // const { openLogOutModal } = useLogOutModalStore();
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   // 내 상점 hover
@@ -16,7 +15,9 @@ export default function NavRightLoggedIn() {
 
   return (
     <Container>
-      <StyledText>로그아웃</StyledText>
+      <StyledText onClick={() => setIsOpen((prev) => !prev)}>
+        로그아웃
+      </StyledText>
 
       <StyledText
         onMouseEnter={() => setIsHovered(true)}
@@ -57,6 +58,7 @@ export default function NavRightLoggedIn() {
           </ShopSubMenu>
         )}
       </ShopContainer>
+      <LogOut isOpen={isOpen} setIsOpen={setIsOpen} />
     </Container>
   )
 }
