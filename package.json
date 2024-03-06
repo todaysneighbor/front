@@ -41,6 +41,7 @@
     "@storybook/nextjs": "^7.6.7",
     "@storybook/react": "^7.6.7",
     "@storybook/test": "^7.6.7",
+    "@swc/plugin-styled-components": "^1.5.118",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

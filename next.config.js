@@ -15,5 +15,8 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  ...nextConfig
+  ...nextConfig,
+  compiler: {
+    styledComponents: true
+  }
 }
