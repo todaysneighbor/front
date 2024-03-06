@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+/* @type {import('next').NextConfig} */
 const nextConfig = {
   // 외부 이미지 불러오기
   images: {
@@ -15,4 +15,5 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  ...nextConfig
 }
