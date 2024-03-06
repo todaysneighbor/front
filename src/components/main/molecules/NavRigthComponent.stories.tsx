@@ -1,7 +1,7 @@
+import React from 'react'
 import type { Meta } from '@storybook/react'
 import NavRightLoggedIn from './NavRightLoggedIn'
 import NavRightLoggedOut from './NavRightLoggedOut'
-import React from 'react'
 
 const meta: Meta = {
   title: 'Nav/NavRight',
@@ -15,7 +15,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Default = ({ isLoggedIn }: any) => {
+export function Default ({ isLoggedIn }: any) {
   return isLoggedIn ? <NavRightLoggedIn /> : <NavRightLoggedOut />
 }
 
