@@ -15,9 +15,6 @@ const meta = {
 
 export default meta
 
-export const Image = {
-  render: () => <img src="/product sell logo.png" alt="img 어디 진짜" />
-}
 
 export function Search() {
   return <SearchInput />
