@@ -1,94 +1,6 @@
-'use client'
-
 import styled from 'styled-components'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-
-export interface TodayRecommendItemProps {
-  imgSrc: string
-  itemName: string
-  itemPrice: number
-  itemDate: Date
-  itemId: number
-}
-
-const TodayRecommendItem = ({
-  itemId,
-  imgSrc,
-  itemName,
-  itemPrice,
-  itemDate,
-}: TodayRecommendItemProps) => {
-  const [standard, setStandard] = useState<string>()
-  const [time, setTime] = useState<number>()
-
-  // 지금 시간
-  const currentDate: Date = new Date()
-  // 물건 작성 시간
-  const itemDateObject: Date = new Date(itemDate)
-  // 차이
-  const timeDifference: number =
-    currentDate.getTime() - itemDateObject.getTime()
-  // 날짜 차이
-  const daysDifference: number = Math.floor(
-    timeDifference / (1000 * 60 * 60 * 24),
-  )
-  // 시간 차이
-  const timeDifference_24: number = Math.floor(
-    timeDifference / (1000 * 60 * 60),
-  )
-
-  useEffect(() => {
-    // 작성한지 24시간 안
-    if (timeDifference_24 < 24) {
-      setStandard('시간 전')
-      setTime(timeDifference_24)
-    } else {
-      setStandard('일 전')
-      setTime(daysDifference)
-    }
-  }, [])
-
-  return (
-    <StyledTodayRecommendItem>
-      <Link
-        href={`/products/${itemId}`}
-        style={{
-          border: '1px solid #EEEEEE',
-          display: 'inline-block',
-          height: '276px',
-        }}
-      >
-        <ImageContainer>
-          <Image
-            src={imgSrc}
-            alt="상품 이미지"
-            width={194}
-            height={194}
-          ></Image>
-        </ImageContainer>
-        <Container>
-          <Text>{itemName}</Text>
-          <Information>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ fontSize: '16px', fontWeight: 'bold' }}>
-                {itemPrice.toLocaleString()}
-              </div>
-              <div style={{ marginLeft: '3px', fontSize: '13px' }}>원</div>
-            </div>
-            <div style={{ color: '#898989', fontSize: '11px' }}>
-              {time}
-              {standard}
-            </div>
-          </Information>
-        </Container>
-      </Link>
-    </StyledTodayRecommendItem>
-  )
-}
-
-export default TodayRecommendItem
 
 const StyledTodayRecommendItem = styled.div`
   width: 196px;
@@ -132,3 +44,73 @@ const Information = styled.div`
   justify-content: space-between;
   align-items: center;
 `
+
+export interface TodayRecommendItemProps {
+  imgSrc: string
+  itemName: string
+  itemPrice: number
+  itemDate: Date
+  itemId: number
+}
+
+function TodayRecommendItem ({
+  itemId,
+  imgSrc,
+  itemName,
+  itemPrice,
+  itemDate,
+}: TodayRecommendItemProps) {
+  const currentDate: Date = new Date()
+  const itemDateObject: Date = new Date(itemDate)
+  const timeDifference: number =
+    currentDate.getTime() - itemDateObject.getTime()
+  const daysDifference: number = Math.floor(
+    timeDifference / (1000 * 60 * 60 * 24),
+  )
+  const timeDifference24: number = Math.floor(
+    timeDifference / (1000 * 60 * 60),
+  )
+
+  const standard = timeDifference24 < 24 ? '시간 전' : '일 전'
+  const time = timeDifference24 < 24 ? timeDifference24 : daysDifference
+
+  return (
+    <StyledTodayRecommendItem>
+      <Link
+        href={`/products/${itemId}`}
+        style={{
+          border: '1px solid #EEEEEE',
+          display: 'inline-block',
+          height: '276px',
+        }}
+      >
+        <ImageContainer>
+          <Image
+            src={imgSrc}
+            alt="상품 이미지"
+            width={194}
+            height={194}
+          />
+        </ImageContainer>
+        <Container>
+          <Text>{itemName}</Text>
+          <Information>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{ fontSize: '16px', fontWeight: 'bold' }}>
+                {itemPrice.toLocaleString()}
+              </div>
+              <div style={{ marginLeft: '3px', fontSize: '13px' }}>원</div>
+            </div>
+            <div style={{ color: '#898989', fontSize: '11px' }}>
+              {time}
+              {standard}
+            </div>
+          </Information>
+        </Container>
+      </Link>
+    </StyledTodayRecommendItem>
+  )
+}
+
+export default TodayRecommendItem
+
