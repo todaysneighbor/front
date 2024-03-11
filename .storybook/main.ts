@@ -8,6 +8,9 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
   ],
+  typescript: {
+    check: true
+  },
   framework: {
     name: '@storybook/nextjs',
     options: {},
@@ -15,5 +18,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  // storybook에서 정적인 이미지 사용하기
+  staticDirs: ['../public'],
 }
 export default config

@@ -1,4 +1,21 @@
 import type { Preview } from '@storybook/react'
+import * as NextImage from 'next/image'
+// storybook 환경에서 Next image 최적화를 쓰지 않으므로 해제해줘야 한다
+
+// const OriginalNextImage = NextImage.default;
+
+// Object.defineProperty(NextImage, "default", {
+//   configurable: true,
+//   value: (props) => <OriginalNextImage {...props} unoptimized />,
+// });
+
+// NextImage.defaultProps = {
+//   unoptimized: true,
+// }
+
+// NextImage.propTypes = {
+//   unoptimized: null,
+// }
 
 const preview: Preview = {
   parameters: {

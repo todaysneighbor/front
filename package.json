@@ -9,8 +9,8 @@
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006 -s ./public",
+    "build-storybook": "storybook build s public"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.9",
@@ -41,6 +41,7 @@
     "@storybook/nextjs": "^7.6.7",
     "@storybook/react": "^7.6.7",
     "@storybook/test": "^7.6.7",
+    "@swc/plugin-styled-components": "^1.5.118",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
