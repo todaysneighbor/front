@@ -19,6 +19,6 @@ const config: StorybookConfig = {
     autodocs: 'tag',
   },
   // storybook에서 정적인 이미지 사용하기
-  staticDirs: ['../public'],
+  // staticDirs: ['../public'],
 }
 export default config
